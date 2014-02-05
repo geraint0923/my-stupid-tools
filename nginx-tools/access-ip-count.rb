@@ -21,15 +21,12 @@ def match_pattern?(file_name)
 end
 
 def walk_dir(work_dir)
+    return if !File.directory?(work_dir)
     Dir.foreach(work_dir) do |base_filename|
 	file = work_dir + "/" + base_filename
 	next if File.directory? file
 	extract_file(file) if match_pattern? file
     end
-end
-
-def process_dir(work_dir) 
-    walk_dir(work_dir) if File.directory? work_dir
 end
 
 def extract_ip(file)
@@ -43,9 +40,8 @@ def extract_ip(file)
     res
 end
     
-
 `rm -rf #{TMP_FILE}`
-process_dir WORK_DIR
+walk_dir WORK_DIR
 res = extract_ip TMP_FILE
 res.each do |key, val|
     puts "#{key} #{val}"
