@@ -9,10 +9,7 @@ INPUT_FILE = "ip.count"
 API_URL = "http://www.telize.com/geoip/"
 
 def locate_ip(ip)
-#TODO should add ip look up code here
-#    puts ip
-#    JSON.parse(Net::HTTP.get(URI(API_URL + ip)))
-    puts API_URL + ip
+    $stderr.puts API_URL + ip
     JSON.parse(Net::HTTP.get(URI(API_URL + ip)))
 end
 
