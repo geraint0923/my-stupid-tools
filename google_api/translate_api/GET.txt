@@ -1,0 +1,8 @@
+(1) Get supported language:
+https://www.googleapis.com/language/translate/v2/languages?key=
+
+(2) Detect source language:
+https://www.googleapis.com/language/translate/v2/detect?key=&q=
+
+(3) Translate:
+https://www.googleapis.com/language/translate/v2?key=&q=&source=&target=

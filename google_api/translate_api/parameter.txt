@@ -1,0 +1,7 @@
+callback
+format
+key
+prettyprint
+q : source text
+source : source language
+target : target language
