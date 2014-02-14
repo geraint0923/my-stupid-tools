@@ -1,0 +1,35 @@
+if !empty($GOROOT)
+  set rtp+=$GOROOT/misc/vim
+elseif isdirectory('$HOME/.usr/local/go')
+  set rtp+=$HOME/.usr/local/go/misc/vim
+end
+
+
+set nu
+set autoindent
+set smartindent
+set autochdir
+set smarttab
+set noexpandtab
+set tabstop=8
+set cindent
+set shiftwidth=8
+set softtabstop=8
+set backspace=indent,eol,start
+
+set nocompatible               " be iMproved
+filetype off                   " required!
+
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+
+" let Vundle manage Vundle
+" required! 
+Bundle 'gmarik/vundle'
+Bundle 'Valloric/YouCompleteMe'
+Bundle 'SirVer/ultisnips'
+filetype plugin indent on
+syntax on
+
+let g:ycm_global_ycm_extra_conf = expand("~/.vim/.ycm_extra_conf.py")
