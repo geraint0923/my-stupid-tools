@@ -4,9 +4,9 @@ require 'net/http'
 require 'json'
 
 INPUT_FILE = "ip.count"
-#API_URL = "http://ip-api.com/json/"
+API_URL = "http://ip-api.com/json/"
 #API_URL = "http://freegeoip.net/json/"
-API_URL = "http://www.telize.com/geoip/"
+#API_URL = "http://www.telize.com/geoip/"
 TAGS = ["ISP", "Country", "City", "Region"]
 TAGS_LENGTH = Hash.new
 CUR_INDEX = 0
@@ -14,6 +14,10 @@ CUR_INDEX = 0
 def locate_ip(ip)
     $stderr.puts CUR_INDEX.to_s + ": " + API_URL + ip
     JSON.parse(Net::HTTP.get(URI(API_URL + ip)))
+end
+
+if ARGV.length > 0
+	INPUT_FILE = ARGV[0]
 end
 
 file = File.open(INPUT_FILE)
@@ -24,6 +28,7 @@ file.each_line do |line|
     val["count"] = sl[1]
     vv = locate_ip sl[0]
     CUR_INDEX += 1
+    $stderr.puts vv
     vv.each do |kk, vv|
 	val[kk] = vv
 	if TAGS_LENGTH.include?(kk)
