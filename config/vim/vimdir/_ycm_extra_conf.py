@@ -23,14 +23,14 @@ flags = [
     './include',
     '-I',
     '../include',
-    '-I',
+    '-isystem',
     '/usr/include',
     '-isystem',
-    '/usr/include/c++/4.2.1',
+    '/usr/bin/../lib/clang/3.5.0/include',
     '-isystem',
-    '/usr/include/c++/4.2.1/x86_64-linux-gnu/',
+    '/usr/lib/gcc/x86_64-pc-linux-gnu/4.8.5/include/g++-v4/x86_64-pc-linux-gnu',
     '-isystem',
-    '/usr/local/include'
+    '/usr/lib/gcc/x86_64-pc-linux-gnu/4.8.5/include/g++-v4'
     ]
 
 if compilation_database_folder:
